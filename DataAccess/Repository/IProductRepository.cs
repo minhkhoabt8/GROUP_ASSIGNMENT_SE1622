@@ -10,7 +10,6 @@ namespace DataAccess.Repository
     internal interface IProductRepository
     {
         IEnumerable<Product> GetProducts();
-        IEnumerable<Product> FilterProductsByUnitPrice(string fromValue, string toValue);
         Product GetProductByID(int productID);
         void AddNewProduct(Product product);
         void UpdateProduct(Product product);

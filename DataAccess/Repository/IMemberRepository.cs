@@ -13,7 +13,7 @@ namespace DataAccess.Repository
         Member GetMemberByID(int memberID);
         void AddNewMember(Member member);
         void UpdateMember(Member member);
-        void DeleteMember(int memberID);
+        void DeleteMember(Member member);
         int CheckLogin(string email, string password);
     }
 }

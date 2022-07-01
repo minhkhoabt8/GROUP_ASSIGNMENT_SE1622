@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BusinessObject;
+using DataAccess.Repository;
 
 namespace SalesWinApp
 {
     public partial class frmMemberMainForm : Form
     {
+     
         public frmMemberMainForm()
         {
             InitializeComponent();
@@ -19,7 +22,7 @@ namespace SalesWinApp
 
         private void btn_UpdateProfile_Click(object sender, EventArgs e)
         {
-
+           
         }
 
         private void btn_ViewOrderHistory_Click(object sender, EventArgs e)
@@ -27,9 +30,11 @@ namespace SalesWinApp
 
         }
 
-        private void btn_Close_Click(object sender, EventArgs e)
-        {
+        private void btn_Close_Click(object sender, EventArgs e) => Close();
 
+        private void frmMemberMainForm_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }
