@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtMemberID = new System.Windows.Forms.TextBox();
+            this.txtCategoryID = new System.Windows.Forms.TextBox();
             this.lb_CategoryID = new System.Windows.Forms.Label();
             this.btn_DeleteProduct = new System.Windows.Forms.Button();
             this.btn_UpdateProduct = new System.Windows.Forms.Button();
-            this.dgv_OrderList = new System.Windows.Forms.DataGridView();
+            this.dgv_ProductList = new System.Windows.Forms.DataGridView();
             this.btn_SearchProductName = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.btn_AddNewProduct = new System.Windows.Forms.Button();
-            this.txt_OrderID = new System.Windows.Forms.TextBox();
+            this.txtProductID = new System.Windows.Forms.TextBox();
             this.lb_ProductID = new System.Windows.Forms.Label();
             this.btnSearchByID = new System.Windows.Forms.Button();
             this.txtSearchProductID = new System.Windows.Forms.TextBox();
@@ -56,17 +56,17 @@
             this.lbSearchUnitPrice = new System.Windows.Forms.Label();
             this.txtSearchProductName = new System.Windows.Forms.TextBox();
             this.lbSearchProductName = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_OrderList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_ProductList)).BeginInit();
             this.SuspendLayout();
             // 
-            // txtMemberID
+            // txtCategoryID
             // 
-            this.txtMemberID.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.txtMemberID.Location = new System.Drawing.Point(176, 220);
-            this.txtMemberID.Name = "txtMemberID";
-            this.txtMemberID.ReadOnly = true;
-            this.txtMemberID.Size = new System.Drawing.Size(205, 27);
-            this.txtMemberID.TabIndex = 134;
+            this.txtCategoryID.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txtCategoryID.Location = new System.Drawing.Point(176, 220);
+            this.txtCategoryID.Name = "txtCategoryID";
+            this.txtCategoryID.ReadOnly = true;
+            this.txtCategoryID.Size = new System.Drawing.Size(205, 27);
+            this.txtCategoryID.TabIndex = 134;
             // 
             // lb_CategoryID
             // 
@@ -85,6 +85,7 @@
             this.btn_DeleteProduct.TabIndex = 131;
             this.btn_DeleteProduct.Text = "Delete Product";
             this.btn_DeleteProduct.UseVisualStyleBackColor = true;
+            this.btn_DeleteProduct.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btn_UpdateProduct
             // 
@@ -94,18 +95,19 @@
             this.btn_UpdateProduct.TabIndex = 130;
             this.btn_UpdateProduct.Text = "Update Product";
             this.btn_UpdateProduct.UseVisualStyleBackColor = true;
+            this.btn_UpdateProduct.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // dgv_OrderList
+            // dgv_ProductList
             // 
-            this.dgv_OrderList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_OrderList.Location = new System.Drawing.Point(406, 151);
-            this.dgv_OrderList.Name = "dgv_OrderList";
-            this.dgv_OrderList.ReadOnly = true;
-            this.dgv_OrderList.RowHeadersWidth = 51;
-            this.dgv_OrderList.RowTemplate.Height = 29;
-            this.dgv_OrderList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_OrderList.Size = new System.Drawing.Size(662, 312);
-            this.dgv_OrderList.TabIndex = 127;
+            this.dgv_ProductList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_ProductList.Location = new System.Drawing.Point(406, 151);
+            this.dgv_ProductList.Name = "dgv_ProductList";
+            this.dgv_ProductList.ReadOnly = true;
+            this.dgv_ProductList.RowHeadersWidth = 51;
+            this.dgv_ProductList.RowTemplate.Height = 29;
+            this.dgv_ProductList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_ProductList.Size = new System.Drawing.Size(662, 312);
+            this.dgv_ProductList.TabIndex = 127;
             // 
             // btn_SearchProductName
             // 
@@ -134,14 +136,15 @@
             this.btn_AddNewProduct.TabIndex = 126;
             this.btn_AddNewProduct.Text = "Add New Product";
             this.btn_AddNewProduct.UseVisualStyleBackColor = true;
+            this.btn_AddNewProduct.Click += new System.EventHandler(this.btnNew_Click);
             // 
-            // txt_OrderID
+            // txtProductID
             // 
-            this.txt_OrderID.Location = new System.Drawing.Point(176, 170);
-            this.txt_OrderID.Name = "txt_OrderID";
-            this.txt_OrderID.ReadOnly = true;
-            this.txt_OrderID.Size = new System.Drawing.Size(205, 27);
-            this.txt_OrderID.TabIndex = 125;
+            this.txtProductID.Location = new System.Drawing.Point(176, 170);
+            this.txtProductID.Name = "txtProductID";
+            this.txtProductID.ReadOnly = true;
+            this.txtProductID.Size = new System.Drawing.Size(205, 27);
+            this.txtProductID.TabIndex = 125;
             // 
             // lb_ProductID
             // 
@@ -333,35 +336,36 @@
             this.Controls.Add(this.btnSearchByID);
             this.Controls.Add(this.txtSearchProductID);
             this.Controls.Add(this.lbSearchProductID);
-            this.Controls.Add(this.txtMemberID);
+            this.Controls.Add(this.txtCategoryID);
             this.Controls.Add(this.lb_CategoryID);
             this.Controls.Add(this.btn_DeleteProduct);
             this.Controls.Add(this.btn_UpdateProduct);
-            this.Controls.Add(this.dgv_OrderList);
+            this.Controls.Add(this.dgv_ProductList);
             this.Controls.Add(this.btn_SearchProductName);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btn_AddNewProduct);
-            this.Controls.Add(this.txt_OrderID);
+            this.Controls.Add(this.txtProductID);
             this.Controls.Add(this.lb_ProductID);
             this.Name = "frmProductManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmProductManagement";
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_OrderList)).EndInit();
+            this.Load += new System.EventHandler(this.frmProductManagement_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_ProductList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private TextBox txtMemberID;
+        private TextBox txtCategoryID;
         private Label lb_CategoryID;
         private Button btn_DeleteProduct;
         private Button btn_UpdateProduct;
-        private DataGridView dgv_OrderList;
+        private DataGridView dgv_ProductList;
         private Button btn_SearchProductName;
         private Button btnClose;
         private Button btn_AddNewProduct;
-        private TextBox txt_OrderID;
+        private TextBox txtProductID;
         private Label lb_ProductID;
         private Button btnSearchByID;
         private TextBox txtSearchProductID;

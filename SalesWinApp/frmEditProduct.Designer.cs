@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txt_UnitsInStock = new System.Windows.Forms.TextBox();
             this.lb_UnitsInStock = new System.Windows.Forms.Label();
             this.txt_UnitPrice = new System.Windows.Forms.TextBox();
@@ -42,6 +43,16 @@
             this.lb_ProductID = new System.Windows.Forms.Label();
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.btn_Save = new System.Windows.Forms.Button();
+            this.errorProviderCategoryID = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderProductName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderWeight = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderUnitPrice = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderUnitsInStock = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderCategoryID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderProductName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderWeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderUnitPrice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderUnitsInStock)).BeginInit();
             this.SuspendLayout();
             // 
             // txt_UnitsInStock
@@ -128,6 +139,7 @@
             // 
             this.txt_ProductID.Location = new System.Drawing.Point(177, 48);
             this.txt_ProductID.Name = "txt_ProductID";
+            this.txt_ProductID.ReadOnly = true;
             this.txt_ProductID.Size = new System.Drawing.Size(190, 27);
             this.txt_ProductID.TabIndex = 13;
             // 
@@ -160,6 +172,26 @@
             this.btn_Save.UseVisualStyleBackColor = true;
             this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
+            // errorProviderCategoryID
+            // 
+            this.errorProviderCategoryID.ContainerControl = this;
+            // 
+            // errorProviderProductName
+            // 
+            this.errorProviderProductName.ContainerControl = this;
+            // 
+            // errorProviderWeight
+            // 
+            this.errorProviderWeight.ContainerControl = this;
+            // 
+            // errorProviderUnitPrice
+            // 
+            this.errorProviderUnitPrice.ContainerControl = this;
+            // 
+            // errorProviderUnitsInStock
+            // 
+            this.errorProviderUnitsInStock.ContainerControl = this;
+            // 
             // frmEditProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -182,6 +214,12 @@
             this.Name = "frmEditProduct";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmEditProduct";
+            this.Load += new System.EventHandler(this.frmEditProduct_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderCategoryID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderProductName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderWeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderUnitPrice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderUnitsInStock)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -203,5 +241,10 @@
         private Label lb_ProductID;
         private Button btn_Cancel;
         private Button btn_Save;
+        private ErrorProvider errorProviderCategoryID;
+        private ErrorProvider errorProviderProductName;
+        private ErrorProvider errorProviderWeight;
+        private ErrorProvider errorProviderUnitPrice;
+        private ErrorProvider errorProviderUnitsInStock;
     }
 }

@@ -97,6 +97,7 @@ namespace BusinessObject
                 entity.Property(e => e.UnitPrice).HasColumnType("money");
 
                 entity.Property(e => e.Weight).HasMaxLength(20);
+
             });
 
             OnModelCreatingPartial(modelBuilder);

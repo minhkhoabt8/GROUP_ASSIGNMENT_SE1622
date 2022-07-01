@@ -11,10 +11,15 @@ namespace DataAccess.Repository
     {
         public void AddNewProduct(Product product)
         {
-            throw new NotImplementedException();
+            ProductDAO.Instance.AddNewProduct(product);
         }
 
         public void DeleteProduct(int productID)
+        {
+            ProductDAO.Instance.DeleteProduct(productID);
+        }
+
+        public IEnumerable<Product> FilterProductsByUnitPrice(string fromValue, string toValue)
         {
             throw new NotImplementedException();
         }
@@ -26,12 +31,12 @@ namespace DataAccess.Repository
 
         public IEnumerable<Product> GetProducts()
         {
-            throw new NotImplementedException();
+            return ProductDAO.Instance.GetProducts();
         }
 
         public void UpdateProduct(Product product)
         {
-            throw new NotImplementedException();
+            ProductDAO.Instance.UpdateProduct(product);
         }
     }
 }
