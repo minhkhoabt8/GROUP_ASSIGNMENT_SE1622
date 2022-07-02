@@ -14,12 +14,17 @@ namespace SalesWinApp
 {
     public partial class frmMemberMainForm : Form
     {
-     
+     public Member member { get; set; }
         public frmMemberMainForm()
         {
             InitializeComponent();
         }
+        public frmMemberMainForm(Member member)
+        {
+            InitializeComponent();
+            this.member = member;
 
+        }
         private void btn_UpdateProfile_Click(object sender, EventArgs e)
         {
            
@@ -34,7 +39,21 @@ namespace SalesWinApp
 
         private void frmMemberMainForm_Load(object sender, EventArgs e)
         {
-            
+            frmMemberManagement frmMemberManagement = null;
+            if(member != null)
+            {
+                frmMemberManagement = new frmMemberManagement(member);
+
+            }
+            else
+            {
+                frmMemberManagement = new frmMemberManagement();
+            }
+            frmMemberManagement.Text = "Members Form";
+            frmMemberManagement.MdiParent = this;
+            frmMemberManagement.StartPosition = FormStartPosition.Manual;
+            frmMemberManagement.Show();
+
         }
     }
 }
