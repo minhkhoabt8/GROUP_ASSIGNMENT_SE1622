@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BusinessObject;
+using System;
 
 namespace DataAccess
 {
@@ -26,6 +28,59 @@ namespace DataAccess
             }
         }
         // code below here
-
+        public List<Order> GetOrders()
+        {
+            List<Order> orders;
+            try
+            {
+                using FStoreDBContext myContext = new FStoreDBContext();
+                orders = myContext.Orders.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return orders;
+        }//end GetOrders
+        public void AddNewOrder(Order order)
+        {
+            try
+            {
+                using FStoreDBContext myContext = new FStoreDBContext();
+                myContext.Orders.Add(order);
+                myContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }//end AddNewOrder
+        public void DeleteOrder(int orderID)
+        {
+            try
+            {
+                using FStoreDBContext myContext = new FStoreDBContext();
+                var p = myContext.Orders.SingleOrDefault(c => c.OrderId == orderID);
+                myContext.Orders.Remove(p);
+                myContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }//end DeleteOrder
+        public void UpdateOrder(Order order)
+        {
+            try
+            {
+                using FStoreDBContext myContext = new FStoreDBContext();
+                myContext.Entry<Order>(order).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                myContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

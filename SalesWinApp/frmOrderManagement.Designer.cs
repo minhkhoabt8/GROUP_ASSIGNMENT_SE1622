@@ -58,6 +58,7 @@
             this.btn_DeleteOrder.TabIndex = 111;
             this.btn_DeleteOrder.Text = "Delete Order";
             this.btn_DeleteOrder.UseVisualStyleBackColor = true;
+            this.btn_DeleteOrder.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btn_UpdateOrder
             // 
@@ -67,6 +68,7 @@
             this.btn_UpdateOrder.TabIndex = 110;
             this.btn_UpdateOrder.Text = "Update Order";
             this.btn_UpdateOrder.UseVisualStyleBackColor = true;
+            this.btn_UpdateOrder.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // dgv_OrderList
             // 
@@ -104,6 +106,7 @@
             this.btnClose.TabIndex = 107;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btn_CloseClick);
             // 
             // btn_AddNewOrder
             // 
@@ -113,6 +116,7 @@
             this.btn_AddNewOrder.TabIndex = 105;
             this.btn_AddNewOrder.Text = "Add New Order";
             this.btn_AddNewOrder.UseVisualStyleBackColor = true;
+            this.btn_AddNewOrder.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // txt_OrderID
             // 
@@ -249,6 +253,7 @@
             this.Name = "frmOrderManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmOrderManagement";
+            this.Load += new System.EventHandler(this.frmOrderManagement_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_OrderList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
