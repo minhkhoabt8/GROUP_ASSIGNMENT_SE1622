@@ -262,6 +262,7 @@
             this.btnSearchByFilter.TabIndex = 159;
             this.btnSearchByFilter.Text = "Filter";
             this.btnSearchByFilter.UseVisualStyleBackColor = true;
+            this.btnSearchByFilter.Click += new System.EventHandler(this.btnSearchByFilter_Click);
             // 
             // txtSearchUnitPriceTo
             // 

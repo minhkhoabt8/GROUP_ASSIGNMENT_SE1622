@@ -11,6 +11,7 @@ namespace DataAccess
     {
         private static ProductDAO instance = null;
         private static readonly object instanceLock = new object();
+        private static FStoreDBContext dbContext = new FStoreDBContext();
         private ProductDAO() { }
         public static ProductDAO Instance
         {
@@ -28,28 +29,31 @@ namespace DataAccess
         }
         //code below here
 
-        public List<Product> GetProducts()
+        public IEnumerable<Product> GetProducts()
         {
-            List<Product> products;
+            //List<Product> products;
             try
             {
-                using FStoreDBContext myContext = new FStoreDBContext();
-                products = myContext.Products.ToList();
-            }catch (Exception ex)
+                
+                var products = dbContext.Products.ToList();
+                return products;
+            }
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
-            return products;
+            //return products;
+            return null;
         }//end GetProducts
 
         public void AddNewProduct(Product product)
         {
             try
             {
-                using FStoreDBContext myContext = new FStoreDBContext();
-                myContext.Products.Add(product);
-                myContext.SaveChanges();
-            }catch (Exception ex)
+                dbContext.Products.Add(product);
+                dbContext.SaveChanges();
+            }
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
@@ -59,10 +63,9 @@ namespace DataAccess
         {
             try
             {
-                using FStoreDBContext myContext = new FStoreDBContext();
-                var p = myContext.Products.SingleOrDefault(c => c.ProductId == productID);
-                myContext.Products.Remove(p);
-                myContext.SaveChanges();
+                var p = dbContext.Products.SingleOrDefault(c => c.ProductId == productID);
+                dbContext.Products.Remove(p);
+                dbContext.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -74,14 +77,40 @@ namespace DataAccess
         {
             try
             {
-                using FStoreDBContext myContext = new FStoreDBContext();
-                myContext.Entry<Product>(product).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                myContext.SaveChanges();
+                dbContext.Entry(product).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                dbContext.SaveChanges();
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
         }
+    
+
+
+    public IEnumerable<Product> FilterProductsByUnitPrice(int fromValue, int toValue)
+        {
+            try
+            {
+                
+                if (fromValue > toValue)
+                {
+                    var products = dbContext.Products.Where(p => p.UnitPrice >= toValue && p.UnitPrice <= fromValue);
+                    return products.OrderByDescending(p=>p.UnitPrice).ToList();
+                }
+                else if (fromValue < toValue)
+                {
+                    var products = dbContext.Products.Where(p => p.UnitPrice >= fromValue && p.UnitPrice <= toValue).ToList();
+                    return products;
+                    
+                }
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return null;
+        }
+
     }
 }
