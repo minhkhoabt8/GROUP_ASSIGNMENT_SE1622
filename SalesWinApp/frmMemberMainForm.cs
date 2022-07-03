@@ -14,11 +14,13 @@ namespace SalesWinApp
 {
     public partial class frmMemberMainForm : Form
     {
-     public Member member { get; set; }
+        public Member member { get; set; }
         public frmMemberMainForm()
         {
             InitializeComponent();
         }
+        IProductRepository productRepository = new ProductRepository();
+        BindingSource source = null;
         public frmMemberMainForm(Member member)
         {
             InitializeComponent();
@@ -32,6 +34,9 @@ namespace SalesWinApp
 
         private void btn_ViewOrderHistory_Click(object sender, EventArgs e)
         {
+           
+           
+            
 
         }
 
@@ -54,5 +59,8 @@ namespace SalesWinApp
             frmMemberManagement.Show();
 
         }
+
+
+
     }
 }

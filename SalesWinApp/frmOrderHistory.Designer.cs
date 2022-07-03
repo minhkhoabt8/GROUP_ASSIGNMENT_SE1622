@@ -64,6 +64,7 @@
             this.Name = "frmOrderHistory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmOrderHistory";
+            this.Load += new System.EventHandler(this.frmOrderHistory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_OrderHistory)).EndInit();
             this.ResumeLayout(false);
 

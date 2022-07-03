@@ -76,7 +76,7 @@ namespace SalesWinApp
             txt_MemberID.Enabled = !CreateOrUpdate;
             if (CreateOrUpdate == false)
             {
-               // txt_MemberID.Text = MemberInfo.MemberId.ToString();
+                txt_MemberID.Text = MemberInfo.MemberId.ToString();
                 txt_CompanyName.Text = MemberInfo.CompanyName.ToString();
                 txt_MemberEmail.Text = MemberInfo.Email;
                 txt_MemberPassword.Text = MemberInfo.Password;

@@ -17,7 +17,7 @@ namespace SalesWinApp
 {
     public partial class frmMemberManagement : Form
     {
-        MemberRepository memberRepository = new MemberRepository();
+        IMemberRepository memberRepository ;
 
         public frmMemberManagement()
         {
@@ -68,7 +68,7 @@ namespace SalesWinApp
             {
                 member = new Member
                 {
-                    MemberId = Int32.Parse(txt_MemberID.Text),
+                    MemberId = int.Parse(txt_MemberID.Text),
                     Email = txt_Email.Text,
                     Password = txt_Password.Text,
                     CompanyName = txt_CompanyName.Text,
