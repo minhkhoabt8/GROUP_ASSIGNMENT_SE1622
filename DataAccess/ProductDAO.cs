@@ -34,7 +34,6 @@ namespace DataAccess
             //List<Product> products;
             try
             {
-                
                 var products = dbContext.Products.ToList();
                 return products;
             }

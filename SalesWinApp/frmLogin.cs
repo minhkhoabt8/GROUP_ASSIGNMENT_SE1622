@@ -18,16 +18,16 @@ namespace SalesWinApp
 
         private void btn_Login_Click(object sender, EventArgs e)
         {
-            var adminAccount = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("DefaultEmail").Get<Member>();
+            //var adminAccount = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("DefaultEmail").Get<Member>();
             string email = txt_Email.Text;
             string password = txt_Password.Text;
-            if(email.Equals(adminAccount.Email) && password.Equals(adminAccount.Password))
-            {
-                frmMemberMainForm frmMemberMainForm = new frmMemberMainForm();
-                this.Hide();
-                frmMemberMainForm.ShowDialog();
-               return;
-            }
+            //if(email.Equals(adminAccount.Email) && password.Equals(adminAccount.Password))
+            //{
+            //    frmMemberMainForm frmMemberMainForm = new frmMemberMainForm();
+            //    this.Hide();
+            //    frmMemberMainForm.ShowDialog();
+            //   return;
+            //}
             foreach(Member member in members)
             {
                 if(email.Equals(member.Email) && password.Equals(member.Password))

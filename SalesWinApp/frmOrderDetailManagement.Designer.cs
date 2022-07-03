@@ -224,6 +224,7 @@
             this.Name = "frmOrderDetailManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmOrderDetailManagement";
+            this.Load += new System.EventHandler(this.frmOrderDetailManagement_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_MemberList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
