@@ -17,7 +17,7 @@ namespace SalesWinApp
 {
     public partial class frmMemberManagement : Form
     {
-        MemberRepository memberRepository = new MemberRepository();
+        private static IMemberRepository memberRepository = new MemberRepository();
 
         public frmMemberManagement()
         {

@@ -16,7 +16,7 @@ namespace SalesWinApp
 {
     public partial class frmEditMember : Form
     {
-        MemberRepository memberRepository = new MemberRepository();
+        private static IMemberRepository memberRepository = new MemberRepository();
         public bool CreateOrUpdate { get; set; }
         public Member MemberInfo { get; set; }
 
