@@ -21,6 +21,7 @@ namespace SalesWinApp
         public int OrderID { get; set; }
         private void frmOrderDetails_Load(object sender, EventArgs e)
         {
+            MessageBox.Show(""+OrderID);
             var orderDetails = OrderDetailRepo.GetOrderDetails(OrderID)
                 .Select(order => new
                 {
@@ -41,6 +42,11 @@ namespace SalesWinApp
                 orderTotalPrice += (double)dgv_OrderDetails.Rows[i].Cells[4].Value;
             }
             txt_TotalOrderPrice.Text = orderTotalPrice.ToString();
+        }
+
+        private void btn_Close_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

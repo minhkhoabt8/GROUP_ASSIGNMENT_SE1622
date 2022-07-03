@@ -46,9 +46,11 @@ namespace SalesWinApp
             frmOrderDetails orderDetailsForm = new frmOrderDetails
             {
                 OrderDetailRepo = this.OrderDetailRepo,
-                // get current row and get cell of orderID
+                //get current row and get cell of orderID
                 OrderID = int.Parse(dgv_OrderHistory.Rows[e.RowIndex].Cells[0].Value.ToString())
+                
             };
+            
             orderDetailsForm.ShowDialog();
         }
 
@@ -56,7 +58,5 @@ namespace SalesWinApp
         {
             Close();
         }
-
-       
     }
 }

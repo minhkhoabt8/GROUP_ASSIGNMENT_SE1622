@@ -44,6 +44,8 @@
             this.dgv_OrderHistory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_OrderHistory.Size = new System.Drawing.Size(776, 356);
             this.dgv_OrderHistory.TabIndex = 2;
+            this.dgv_OrderHistory.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrderHistory_CellDoubleClick);
+
             // 
             // btn_Close
             // 
