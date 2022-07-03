@@ -60,12 +60,6 @@ namespace SalesWinApp
             frmMemberManagement.Show();
 
         }
-        private void LoadOrders()
-        {
-            var orders = memberRepository.GetOrderHistory(int.Parse(txt_MemberID.Text));
-
-            frmOrderHistory orderHistory = new frmOrderHistory();
-
-        }
+        
     }
 }

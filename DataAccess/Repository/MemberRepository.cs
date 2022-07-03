@@ -34,11 +34,6 @@ namespace DataAccess.Repository
             return MemberDAO.Instance.GetMembers();
         }
 
-        public IEnumerable<Order> GetOrderHistory(int memberId)
-        {
-            return MemberDAO.Instance.GetMemberOrderHistory(memberId);
-        }
-
         public void UpdateMember(Member member)
         {
             MemberDAO.Instance.Update(member);

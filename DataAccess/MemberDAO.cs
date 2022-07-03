@@ -13,7 +13,7 @@ namespace DataAccess
     {
         private static MemberDAO instance = null;
         private static readonly object instanceLock = new object();
-        private static FStoreDBContext dbcontext= new FStoreDBContext();
+       
         private MemberDAO() { }
         public static MemberDAO Instance
         {
@@ -140,20 +140,7 @@ namespace DataAccess
             return member;
         }
 
-        public IEnumerable<Order> GetMemberOrderHistory(int memberId)
-        {
-            try
-            {
-                var orderList = dbcontext.Orders.Where(o => o.MemberId == memberId).ToList();
-                return orderList;
-                
-            }
-            catch(Exception ex)
-            {
-
-            }
-            return null;
-        } 
+        
 
     }
 }

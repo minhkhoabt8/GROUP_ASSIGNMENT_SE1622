@@ -10,7 +10,6 @@ namespace DataAccess.Repository
     public interface IMemberRepository
     {
         IEnumerable<Member> GetMembers();
-        IEnumerable<Order> GetOrderHistory(int memberId);
         Member GetMemberByID(int memberID);
         void AddNewMember(Member member);
         void UpdateMember(Member member);
