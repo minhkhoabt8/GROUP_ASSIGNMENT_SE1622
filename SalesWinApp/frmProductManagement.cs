@@ -182,5 +182,95 @@ namespace SalesWinApp
             txtUnitPrice.Text = string.Empty;
             txtUnitsInStock.Text = string.Empty;
         }
+
+        private void btnSearchByID_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var product = productRepository.SearchProductByID(int.Parse(txtSearchProductID.Text));
+
+                source = new BindingSource();
+                source.DataSource = product;
+
+                txtProductID.DataBindings.Clear();
+                txtCategoryID.DataBindings.Clear();
+                txtProductName.DataBindings.Clear();
+                txtWeight.DataBindings.Clear();
+                txtUnitPrice.DataBindings.Clear();
+                txtUnitsInStock.DataBindings.Clear();
+
+                txtProductID.DataBindings.Add("Text", product, "ProductID");
+                txtCategoryID.DataBindings.Add("Text", product, "CategoryID");
+                txtProductName.DataBindings.Add("Text", product, "ProductName");
+                txtWeight.DataBindings.Add("Text", product, "Weight");
+                txtUnitPrice.DataBindings.Add("Text", product, "UnitPrice");
+                txtUnitsInStock.DataBindings.Add("Text", product, "UnitInStock");
+
+                dgv_ProductList.DataSource = null;
+                dgv_ProductList.DataSource = source;
+
+                if (!product.Any())
+                {
+                    MessageBox.Show("No Product Found!!!");
+                    btn_DeleteProduct.Enabled = false;
+                    btn_UpdateProduct.Enabled = false;
+                    LoadProducts();
+                }
+                else
+                {
+                    btn_DeleteProduct.Enabled = true;
+                    btn_UpdateProduct.Enabled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btn_SearchProductName_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var product = productRepository.SearchProductByName(txtSearchProductName.Text);
+
+                source = new BindingSource();
+                source.DataSource = product;
+
+                txtProductID.DataBindings.Clear();
+                txtCategoryID.DataBindings.Clear();
+                txtProductName.DataBindings.Clear();
+                txtWeight.DataBindings.Clear();
+                txtUnitPrice.DataBindings.Clear();
+                txtUnitsInStock.DataBindings.Clear();
+
+                txtProductID.DataBindings.Add("Text", product, "ProductID");
+                txtCategoryID.DataBindings.Add("Text", product, "CategoryID");
+                txtProductName.DataBindings.Add("Text", product, "ProductName");
+                txtWeight.DataBindings.Add("Text", product, "Weight");
+                txtUnitPrice.DataBindings.Add("Text", product, "UnitPrice");
+                txtUnitsInStock.DataBindings.Add("Text", product, "UnitInStock");
+
+                dgv_ProductList.DataSource = null;
+                dgv_ProductList.DataSource = source;
+
+                if (!product.Any())
+                {
+                    MessageBox.Show("No Product Found!!!");
+                    btn_DeleteProduct.Enabled = false;
+                    btn_UpdateProduct.Enabled = false;
+                    LoadProducts();
+                }
+                else
+                {
+                    btn_DeleteProduct.Enabled = true;
+                    btn_UpdateProduct.Enabled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
