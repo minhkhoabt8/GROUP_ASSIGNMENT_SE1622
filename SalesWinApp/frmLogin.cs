@@ -54,7 +54,7 @@ namespace SalesWinApp
                 {
                     if (email.Equals(member.Email) && password.Equals(member.Password))
                     {
-                        frmMemberMainForm frmMemberMainForm = new frmMemberMainForm(member);
+                        frmMemberMainForm frmMemberMainForm = new frmMemberMainForm();
                         
                         frmMemberMainForm.ShowDialog();
                         
