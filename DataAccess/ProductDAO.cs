@@ -11,7 +11,7 @@ namespace DataAccess
     {
         private static ProductDAO instance = null;
         private static readonly object instanceLock = new object();
-        private static FStoreDBContext dbContext = new FStoreDBContext();
+        
         private ProductDAO() { }
         public static ProductDAO Instance
         {
@@ -34,7 +34,8 @@ namespace DataAccess
             //List<Product> products;
             try
             {
-                var products = dbContext.Products.ToList();
+                using FStoreDBContext dBContext = new FStoreDBContext();
+                var products = dBContext.Products.ToList();
                 return products;
             }
             catch (Exception ex)
@@ -49,8 +50,9 @@ namespace DataAccess
         {
             try
             {
-                dbContext.Products.Add(product);
-                dbContext.SaveChanges();
+                using FStoreDBContext myContext = new FStoreDBContext();
+                myContext.Products.Add(product);
+                myContext.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -62,9 +64,10 @@ namespace DataAccess
         {
             try
             {
-                var p = dbContext.Products.SingleOrDefault(c => c.ProductId == productID);
-                dbContext.Products.Remove(p);
-                dbContext.SaveChanges();
+                using FStoreDBContext myContext = new FStoreDBContext();
+                var p = myContext.Products.SingleOrDefault(c => c.ProductId == productID);
+                myContext.Products.Remove(p);
+                myContext.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -76,8 +79,9 @@ namespace DataAccess
         {
             try
             {
-                dbContext.Entry(product).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                dbContext.SaveChanges();
+                using FStoreDBContext myContext = new FStoreDBContext();
+                myContext.Entry<Product>(product).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                myContext.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -91,15 +95,15 @@ namespace DataAccess
         {
             try
             {
-                
+                using FStoreDBContext dBContext = new FStoreDBContext();
                 if (fromValue > toValue)
                 {
-                    var products = dbContext.Products.Where(p => p.UnitPrice >= toValue && p.UnitPrice <= fromValue);
+                    var products = dBContext.Products.Where(p => p.UnitPrice >= toValue && p.UnitPrice <= fromValue);
                     return products.OrderByDescending(p=>p.UnitPrice).ToList();
                 }
                 else if (fromValue < toValue)
                 {
-                    var products = dbContext.Products.Where(p => p.UnitPrice >= fromValue && p.UnitPrice <= toValue).ToList();
+                    var products = dBContext.Products.Where(p => p.UnitPrice >= fromValue && p.UnitPrice <= toValue).ToList();
                     return products;
                     
                 }
