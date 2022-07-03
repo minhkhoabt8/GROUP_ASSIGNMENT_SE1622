@@ -7,26 +7,26 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repository
 {
-    internal class OrderRepository : IOrderRepository
+    public class OrderRepository : IOrderRepository
     {
         public void AddNewOrder(Order order)
         {
-            throw new NotImplementedException();
+            OrderDAO.Instance.AddNewOrder(order);
         }
 
         public void DeleteOrder(int orderID)
         {
-            throw new NotImplementedException();
+            OrderDAO.Instance.DeleteOrder(orderID);
         }
 
         public IEnumerable<Order> GetOrders()
         {
-            throw new NotImplementedException();
+           return OrderDAO.Instance.GetOrders();
         }
 
         public void UpdateOrder(Order order)
         {
-            throw new NotImplementedException();
+            OrderDAO.Instance.UpdateOrder(order);
         }
     }
 }

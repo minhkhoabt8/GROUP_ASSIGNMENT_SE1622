@@ -11,7 +11,7 @@ namespace DataAccess.Repository
     {
         public void AddNewMember(Member member)
         {
-            throw new NotImplementedException();
+           MemberDAO.Instance.AddMember(member);
         }
 
         public int CheckLogin(string email, string password)
@@ -21,7 +21,7 @@ namespace DataAccess.Repository
 
         public void DeleteMember(int memberID)
         {
-            throw new NotImplementedException();
+            MemberDAO.Instance.DeleteMember(memberID);
         }
 
         public Member GetMemberByID(int memberID)
@@ -31,12 +31,17 @@ namespace DataAccess.Repository
 
         public IEnumerable<Member> GetMembers()
         {
-            throw new NotImplementedException();
+            return MemberDAO.Instance.GetMembers();
+        }
+
+        public IEnumerable<Order> GetOrderHistory(int memberId)
+        {
+            return MemberDAO.Instance.GetMemberOrderHistory(memberId);
         }
 
         public void UpdateMember(Member member)
         {
-            throw new NotImplementedException();
+            MemberDAO.Instance.Update(member);
         }
     }
 }

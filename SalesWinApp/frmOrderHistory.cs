@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccess.Repository;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,17 @@ namespace SalesWinApp
 {
     public partial class frmOrderHistory : Form
     {
+
+        IMemberRepository memberRepository;
+
         public frmOrderHistory()
         {
             InitializeComponent();
+        }
+
+        private void frmOrderHistory_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }

@@ -16,5 +16,10 @@ namespace SalesWinApp
         {
             InitializeComponent();
         }
+
+        private void frmOrderDetailManagement_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

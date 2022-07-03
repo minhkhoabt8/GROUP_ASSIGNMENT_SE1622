@@ -19,9 +19,9 @@ namespace DataAccess.Repository
             ProductDAO.Instance.DeleteProduct(productID);
         }
 
-        public IEnumerable<Product> FilterProductsByUnitPrice(string fromValue, string toValue)
+        public IEnumerable<Product> FilterProductsByUnitPrice(int fromValue, int toValue)
         {
-            throw new NotImplementedException();
+            return ProductDAO.Instance.FilterProductsByUnitPrice(fromValue, toValue);
         }
 
         public Product GetProductByID(int productID)

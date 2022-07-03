@@ -15,43 +15,51 @@ namespace SalesWinApp
 {
     public partial class frmProductManagement : Form
     {
+        private static IProductRepository productRepository = new ProductRepository();
+        BindingSource source = null;
         public frmProductManagement()
         {
             InitializeComponent();
         }
 
-        private static IProductRepository productRepository = new ProductRepository();
-
         private void LoadProducts()
         {
-            var products = ProductDAO.Instance.GetProducts();
-
-            txtProductID.DataBindings.Clear();
-            txtCategoryID.DataBindings.Clear();
-            txtProductName.DataBindings.Clear();
-            txtWeight.DataBindings.Clear();
-            txtUnitPrice.DataBindings.Clear();
-            txtUnitsInStock.DataBindings.Clear();
-
-            txtProductID.DataBindings.Add("Text",  products, "ProductID");
-            txtCategoryID.DataBindings.Add("Text", products, "CategoryID");
-            txtProductName.DataBindings.Add("Text", products, "ProductName");
-            txtWeight.DataBindings.Add("Text", products, "Weight");
-            txtUnitPrice.DataBindings.Add("Text", products, "UnitPrice");
-            txtUnitsInStock.DataBindings.Add("Text", products, "UnitInStock");
-
-            dgv_ProductList.DataSource = products;
-
-            if(products.Count > 0)
+            try
             {
-                btn_DeleteProduct.Enabled = true;
-                btn_UpdateProduct.Enabled = true;
-            }
-            else
+            
+                var products = productRepository.GetProducts();
+
+                txtProductID.DataBindings.Clear();
+                txtCategoryID.DataBindings.Clear();
+                txtProductName.DataBindings.Clear();
+                txtWeight.DataBindings.Clear();
+                txtUnitPrice.DataBindings.Clear();
+                txtUnitsInStock.DataBindings.Clear();
+
+                txtProductID.DataBindings.Add("Text", products, "ProductID");
+                txtCategoryID.DataBindings.Add("Text", products, "CategoryID");
+                txtProductName.DataBindings.Add("Text", products, "ProductName");
+                txtWeight.DataBindings.Add("Text", products, "Weight");
+                txtUnitPrice.DataBindings.Add("Text", products, "UnitPrice");
+                txtUnitsInStock.DataBindings.Add("Text", products, "UnitInStock");
+
+                dgv_ProductList.DataSource = null;
+                dgv_ProductList.DataSource = products;
+
+                if (products.Any())
+                {
+                    btn_DeleteProduct.Enabled = true;
+                    btn_UpdateProduct.Enabled = true;
+                }
+                else
+                {
+                    ClearText();
+                    btn_DeleteProduct.Enabled = false;
+                    btn_UpdateProduct.Enabled = false;
+                }
+            }catch(Exception ex)
             {
-                ClearText();
-                btn_DeleteProduct.Enabled = false;
-                btn_UpdateProduct.Enabled = false;
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -119,6 +127,52 @@ namespace SalesWinApp
             return product;
         }
 
+        private void btnSearchByFilter_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                var products = productRepository.FilterProductsByUnitPrice(int.Parse(txtSearchUnitPriceFrom.Text), int.Parse(txtSearchUnitPriceTo.Text));
+
+                source = new BindingSource();
+                source.DataSource = products;
+
+                txtProductID.DataBindings.Clear();
+                txtCategoryID.DataBindings.Clear();
+                txtProductName.DataBindings.Clear();
+                txtWeight.DataBindings.Clear();
+                txtUnitPrice.DataBindings.Clear();
+                txtUnitsInStock.DataBindings.Clear();
+
+                txtProductID.DataBindings.Add("Text", products, "ProductID");
+                txtCategoryID.DataBindings.Add("Text", products, "CategoryID");
+                txtProductName.DataBindings.Add("Text", products, "ProductName");
+                txtWeight.DataBindings.Add("Text", products, "Weight");
+                txtUnitPrice.DataBindings.Add("Text", products, "UnitPrice");
+                txtUnitsInStock.DataBindings.Add("Text", products, "UnitInStock");
+
+                dgv_ProductList.DataSource = null;
+                dgv_ProductList.DataSource = source;
+
+                if (!products.Any())
+                {
+                    MessageBox.Show("No Product Found!!!");
+                    btn_DeleteProduct.Enabled = false;
+                    btn_UpdateProduct.Enabled = false;
+                    LoadProducts();
+                }
+                else
+                {
+                    btn_DeleteProduct.Enabled = true;
+                    btn_UpdateProduct.Enabled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void ClearText()
         {
             txtProductID.Text = string.Empty;
@@ -128,6 +182,5 @@ namespace SalesWinApp
             txtUnitPrice.Text = string.Empty;
             txtUnitsInStock.Text = string.Empty;
         }
-
     }
 }

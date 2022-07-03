@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txt_ShippedDate = new System.Windows.Forms.TextBox();
             this.txt_RequiredDate = new System.Windows.Forms.TextBox();
             this.txt_OrderDate = new System.Windows.Forms.TextBox();
@@ -42,6 +43,16 @@
             this.lb_OrderID = new System.Windows.Forms.Label();
             this.btn_Save = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
+            this.errorProviderMemberID = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderFreight = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderOrderDate = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderRequireDate = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderShippedDate = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderMemberID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderFreight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderOrderDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderRequireDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderShippedDate)).BeginInit();
             this.SuspendLayout();
             // 
             // txt_ShippedDate
@@ -128,6 +139,7 @@
             // 
             this.txt_OrderID.Location = new System.Drawing.Point(180, 54);
             this.txt_OrderID.Name = "txt_OrderID";
+            this.txt_OrderID.ReadOnly = true;
             this.txt_OrderID.Size = new System.Drawing.Size(197, 27);
             this.txt_OrderID.TabIndex = 18;
             // 
@@ -159,6 +171,25 @@
             this.btn_Cancel.Text = "Cancel";
             this.btn_Cancel.UseVisualStyleBackColor = true;
             this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
+            // errorProviderCategoryID
+            // 
+            this.errorProviderMemberID.ContainerControl = this;
+            // 
+            // errorProviderProductName
+            // 
+            this.errorProviderFreight.ContainerControl = this;
+            // 
+            // errorProviderWeight
+            // 
+            this.errorProviderOrderDate.ContainerControl = this;
+            // 
+            // errorProviderUnitPrice
+            // 
+            this.errorProviderRequireDate.ContainerControl = this;
+            // 
+            // errorProviderUnitsInStock
+            // 
+            this.errorProviderShippedDate.ContainerControl = this;
             // 
             // frmEditOrder
             // 
@@ -182,6 +213,12 @@
             this.Name = "frmEditOrder";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditOrder";
+            this.Load += new System.EventHandler(this.frmEditOrder_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderMemberID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderFreight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderOrderDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderRequireDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderShippedDate)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -203,5 +240,10 @@
         private Label lb_OrderID;
         private Button btn_Save;
         private Button btn_Cancel;
+        private ErrorProvider errorProviderMemberID;
+        private ErrorProvider errorProviderFreight;
+        private ErrorProvider errorProviderOrderDate;
+        private ErrorProvider errorProviderRequireDate;
+        private ErrorProvider errorProviderShippedDate;
     }
 }

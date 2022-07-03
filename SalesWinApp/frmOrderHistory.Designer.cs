@@ -36,13 +36,13 @@
             // dgv_OrderHistory
             // 
             this.dgv_OrderHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_OrderHistory.Location = new System.Drawing.Point(106, 83);
+            this.dgv_OrderHistory.Location = new System.Drawing.Point(12, 12);
             this.dgv_OrderHistory.Name = "dgv_OrderHistory";
             this.dgv_OrderHistory.ReadOnly = true;
             this.dgv_OrderHistory.RowHeadersWidth = 51;
             this.dgv_OrderHistory.RowTemplate.Height = 29;
             this.dgv_OrderHistory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_OrderHistory.Size = new System.Drawing.Size(588, 285);
+            this.dgv_OrderHistory.Size = new System.Drawing.Size(776, 356);
             this.dgv_OrderHistory.TabIndex = 2;
             // 
             // btn_Close
@@ -64,6 +64,7 @@
             this.Name = "frmOrderHistory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmOrderHistory";
+            this.Load += new System.EventHandler(this.frmOrderHistory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_OrderHistory)).EndInit();
             this.ResumeLayout(false);
 
