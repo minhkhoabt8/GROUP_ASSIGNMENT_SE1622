@@ -12,7 +12,7 @@ namespace SalesWinApp
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new frmOrderManagement());
-            //Application.Run(new frmProductManagement());
+           // Application.Run(new frmProductManagement());
         }
     }
 }

@@ -114,8 +114,8 @@ namespace SalesWinApp
 
         private void frmEditOrder_Load(object sender, EventArgs e)
         {
-            var id = orderRepository.GetOrders().Max(c => c.OrderId) + 1;
-            txt_OrderID.Text = id.ToString();
+           // var id = orderRepository.GetOrders().Max(c => c.OrderId) + 1;
+            //txt_OrderID.Text = id.ToString();
             if (InsertOrUpdate == true)
             {
                 txt_OrderID.Text = orderInfo.OrderId.ToString();
@@ -125,6 +125,22 @@ namespace SalesWinApp
                 txt_RequiredDate.Text = orderInfo.RequiredDate.ToString();
                 txt_ShippedDate.Text = orderInfo.ShippedDate.ToString();
             }
+            else
+            {
+                var count = orderRepository.GetOrders().Count();
+                if (count > 0)
+                {
+                    var id = orderRepository.GetOrders().Max(c => c.OrderId) + 1;
+                    txt_OrderID.Text = id.ToString();
+                }
+                else
+                {
+                    txt_OrderID.Text = "Randomly Generate";
+                }
+            }
+
+
+
         }
     }
 }
