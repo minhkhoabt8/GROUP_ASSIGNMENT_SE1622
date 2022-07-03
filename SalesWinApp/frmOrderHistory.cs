@@ -23,7 +23,7 @@ namespace SalesWinApp
         }
         public OrderRepository OrderRepo { get; set; }
         public OrderDetailRepository OrderDetailRepo { get; set; }
-        public Member MemberInfo { get; set; }
+        public IEnumerable<Order> orderHistoryInfo { get; set; }
         private void frmOrderHistory_Load(object sender, EventArgs e)
         {
             LoadMemberOrderHistory();
@@ -32,9 +32,9 @@ namespace SalesWinApp
         {
             try
             {
-                var orders = OrderRepo.GetOrders().Where(order => order.MemberId == MemberInfo.MemberId).ToList();
-                dgv_OrderHistory.DataSource = orders;
-                dgv_OrderHistory.ClearSelection();
+                
+                dgv_OrderHistory.DataSource = orderHistoryInfo.ToList();
+                
             }
             catch (Exception ex)
             {
@@ -51,5 +51,12 @@ namespace SalesWinApp
             };
             orderDetailsForm.ShowDialog();
         }
+
+        private void btn_Close_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+       
     }
 }

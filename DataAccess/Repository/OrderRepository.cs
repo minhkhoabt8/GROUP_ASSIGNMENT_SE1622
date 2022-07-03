@@ -19,6 +19,11 @@ namespace DataAccess.Repository
             OrderDAO.Instance.DeleteOrder(orderID);
         }
 
+        public IEnumerable<Order> GetOrderHistory(int memberId)
+        {
+            return OrderDAO.Instance.GetOrderHistory(memberId);
+        }
+
         public IEnumerable<Order> GetOrders()
         {
            return OrderDAO.Instance.GetOrders();

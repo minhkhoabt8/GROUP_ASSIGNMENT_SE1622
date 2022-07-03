@@ -82,5 +82,20 @@ namespace DataAccess
                 throw new Exception(ex.Message);
             }
         }
+
+        public IEnumerable<Order> GetOrderHistory(int memberId)
+        {
+            try
+            {
+                FStoreDBContext dBContext = new FStoreDBContext();
+                var orders = dBContext.Orders.Where(o => o.MemberId == memberId).ToList();
+                return orders;
+                
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

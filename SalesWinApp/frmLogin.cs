@@ -40,7 +40,7 @@ namespace SalesWinApp
                                        .SetBasePath(Directory.GetCurrentDirectory())
                                        .AddJsonFile("appsettings.json", true, true)
                                        .Build();
-
+            var memberDetails = memberRepository.Login(txt_Email.Text, txt_Password.Text);
 
             if (email.Equals(config["DefaultEmail:Email"]) &&
                  password.Equals(config["DefaultEmail:Password"]))
@@ -48,21 +48,28 @@ namespace SalesWinApp
                 frmAdminMainForm admin = new frmAdminMainForm();
                 admin.ShowDialog();
             }
+            else if (memberDetails != null)
+            {
+
+                //direct to user page
+                frmMemberMainForm frmMemberMain = new frmMemberMainForm
+                {
+                    Text = "User Info",
+                    InsertOrUpdate = true,
+                    MemberDetails = memberDetails,
+                    MemberRepository = memberRepository
+                };
+                if (frmMemberMain.ShowDialog() == DialogResult.Cancel)
+                {
+                    MessageBox.Show("Goodbye! See you again!");
+                }
+
+            }
             else
             {
-                foreach (Member member in memberList)
-                {
-                    if (email.Equals(member.Email) && password.Equals(member.Password))
-                    {
-                        frmMemberMainForm frmMemberMainForm = new frmMemberMainForm();
-                        
-                        frmMemberMainForm.ShowDialog();
-
-                    }
-                }
-                
+                MessageBox.Show("Username Or Password not Found!!");
             }
-            
+
 
 
         }

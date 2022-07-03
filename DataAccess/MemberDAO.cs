@@ -13,7 +13,7 @@ namespace DataAccess
     {
         private static MemberDAO instance = null;
         private static readonly object instanceLock = new object();
-       
+        
         private MemberDAO() { }
         public static MemberDAO Instance
         {
@@ -140,7 +140,21 @@ namespace DataAccess
             return member;
         }
 
-        
+        public Member Login(string email, string password)
+        {
+            Member member = null;
+            try
+            {
+                FStoreDBContext dBContext = new FStoreDBContext();
+                member = dBContext.Members.FirstOrDefault(u => u.Email == email && u.Password == password);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            
+            return member;
+        }
 
     }
 }

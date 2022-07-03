@@ -11,9 +11,10 @@ namespace DataAccess.Repository
     {
         IEnumerable<Member> GetMembers();
         Member GetMemberByID(int memberID);
+        Member Login(string email, string password);
         void AddNewMember(Member member);
         void UpdateMember(Member member);
         void DeleteMember(int memberID);
-        int CheckLogin(string email, string password);
+        
     }
 }

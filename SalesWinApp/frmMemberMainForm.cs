@@ -16,11 +16,12 @@ namespace SalesWinApp
     public partial class frmMemberMainForm : Form
     {
         private static IMemberRepository memberRepository = new MemberRepository();
-
-        public Member member { get; set; }
-        public Member currMember = null;
-        public bool CreateOrUpdate { get; set; }
-        public Member MemberInfo { get; set; }
+        private static IOrderRepository orderRepository = new OrderRepository();
+        public bool InsertOrUpdate { get; set; }
+        public Member MemberDetails { get; set; }
+        public IMemberRepository MemberRepository { get; set; }
+        
+       
 
         public frmMemberMainForm()
         {
@@ -30,20 +31,18 @@ namespace SalesWinApp
   
         private void btn_UpdateProfile_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btn_ViewOrderHistory_Click(object sender, EventArgs e)
         {
-            //currMember = memberRepository.GetMemberByID(MemberID);
-            //frmOrderHistory frmOrderHistory = new frmOrderHistory
-            //{
-               
-            //   MemberInfo = currMember
-            //};
-            //frmOrderHistory.ShowDialog();
-
-
+            var currMember = orderRepository.GetOrderHistory(MemberDetails.MemberId);
+            
+            frmOrderHistory frmOrderHistory = new frmOrderHistory
+            {
+                orderHistoryInfo = currMember
+            };
+            frmOrderHistory.ShowDialog();
 
         }
 
@@ -55,21 +54,17 @@ namespace SalesWinApp
         }
         private void LoadMember()
         {
-            var members = MemberDAO.Instance.GetMembers();
-            txt_MemberID.DataBindings.Clear();
-            txt_Email.DataBindings.Clear();
-            txt_CompanyName.DataBindings.Clear();
-            txt_Password.DataBindings.Clear();
-            txt_City.DataBindings.Clear();
-            txt_Country.DataBindings.Clear();
-
-            txt_MemberID.DataBindings.Add("Text", members, "MemberId");
-            txt_Email.DataBindings.Add("Text", members, "Email");
-            txt_CompanyName.DataBindings.Add("Text", members, "CompanyName");
-            txt_City.DataBindings.Add("Text", members, "City");
-            txt_Country.DataBindings.Add("Text", members, "Country");
-            txt_Password.DataBindings.Add("Text", members, "Password");
-            txt_MemberID.Enabled = false;
+            
+            txt_MemberID.Enabled = !InsertOrUpdate;
+            if (InsertOrUpdate == true)
+            {
+                txt_MemberID.Text = MemberDetails.MemberId.ToString();
+                txt_Email.Text = MemberDetails.Email;
+                txt_CompanyName.Text = MemberDetails.CompanyName;
+                txt_Password.Text = MemberDetails.Password;
+                txt_City.Text = MemberDetails.City;
+                txt_Country.Text = MemberDetails.Country;
+            }
         }
     }
 }
