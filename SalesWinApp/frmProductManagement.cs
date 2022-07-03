@@ -20,7 +20,7 @@ namespace SalesWinApp
             InitializeComponent();
         }
 
-        ProductRepository productRepository = new ProductRepository();
+        private static IProductRepository productRepository = new ProductRepository();
 
         private void LoadProducts()
         {

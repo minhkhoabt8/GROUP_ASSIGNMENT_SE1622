@@ -19,7 +19,7 @@ namespace SalesWinApp
         {
             InitializeComponent();
         }
-        ProductRepository productRepository = new ProductRepository();
+        private static IProductRepository productRepository = new ProductRepository();
         public bool InsertOrUpdate { get; set; }
 
         public Product productInfo { get; set; }
