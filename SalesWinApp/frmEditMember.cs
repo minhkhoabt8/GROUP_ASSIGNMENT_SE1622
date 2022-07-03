@@ -30,9 +30,10 @@ namespace SalesWinApp
             
             try
             {
+      
                 var members = new Member
                 {
-                    //MemberId = int.Parse(txt_MemberID.Text),
+
                     CompanyName = txt_CompanyName.Text,
                     Email = txt_MemberEmail.Text,
                     Password = txt_MemberPassword.Text,
@@ -54,7 +55,9 @@ namespace SalesWinApp
                 }
                 else
                 {
+                    members.MemberId = int.Parse(txt_MemberID.Text);
                     memberRepository.UpdateMember(members);
+                    
                 }
                 this.DialogResult = DialogResult.OK;
             }
@@ -76,8 +79,8 @@ namespace SalesWinApp
             txt_MemberID.Enabled = !CreateOrUpdate;
             if (CreateOrUpdate == false)
             {
-               // txt_MemberID.Text = MemberInfo.MemberId.ToString();
-                txt_CompanyName.Text = MemberInfo.CompanyName.ToString();
+                txt_MemberID.Text = MemberInfo.MemberId.ToString();
+                txt_CompanyName.Text = MemberInfo.CompanyName;
                 txt_MemberEmail.Text = MemberInfo.Email;
                 txt_MemberPassword.Text = MemberInfo.Password;
                 cbo_City.Text = MemberInfo.City.Trim();
