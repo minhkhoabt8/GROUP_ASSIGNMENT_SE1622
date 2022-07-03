@@ -24,6 +24,7 @@ namespace SalesWinApp
 
         public Product productInfo { get; set; }
 
+
         private void btn_Save_Click(object sender, EventArgs e)
         {
             try
@@ -110,8 +111,6 @@ namespace SalesWinApp
 
         private void frmEditProduct_Load(object sender, EventArgs e)
         {
-            var id = productRepository.GetProducts().Max(c => c.ProductId) + 1;
-            txt_ProductID.Text = id.ToString();
             if (InsertOrUpdate == true)
             {
                 txt_ProductID.Text = productInfo.ProductId.ToString();
@@ -120,6 +119,19 @@ namespace SalesWinApp
                 txt_Weight.Text = productInfo.Weight;
                 txt_UnitPrice.Text = productInfo.UnitPrice.ToString();
                 txt_UnitsInStock.Text = productInfo.UnitInStock.ToString();
+            }
+            else
+            {
+                var count = productRepository.GetProducts().Count();
+                if (count > 0)
+                {
+                    var id = productRepository.GetProducts().Max(c => c.ProductId) + 1;
+                    txt_ProductID.Text = id.ToString();
+                }
+                else
+                {
+                    txt_ProductID.Text = "Randomly Generate";
+                }  
             }
         }
     }

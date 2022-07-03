@@ -45,10 +45,13 @@ namespace SalesWinApp
             if(products.Count > 0)
             {
                 btn_DeleteProduct.Enabled = true;
+                btn_UpdateProduct.Enabled = true;
             }
             else
             {
+                ClearText();
                 btn_DeleteProduct.Enabled = false;
+                btn_UpdateProduct.Enabled = false;
             }
         }
 
@@ -115,5 +118,16 @@ namespace SalesWinApp
             }
             return product;
         }
+
+        private void ClearText()
+        {
+            txtProductID.Text = string.Empty;
+            txtCategoryID.Text = string.Empty;
+            txtProductName.Text = string.Empty;
+            txtWeight.Text = string.Empty;
+            txtUnitPrice.Text = string.Empty;
+            txtUnitsInStock.Text = string.Empty;
+        }
+
     }
 }
