@@ -11,8 +11,9 @@ namespace SalesWinApp
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new frmOrderManagement());
+            //Application.Run(new frmMemberManagement());
             //Application.Run(new frmProductManagement());
+            Application.Run(new frmMemberManagement());
         }
     }
 }

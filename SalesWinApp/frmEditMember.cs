@@ -16,7 +16,7 @@ namespace SalesWinApp
 {
     public partial class frmEditMember : Form
     {
-        public IMemberRepository MemberRepository { get; set; }
+        MemberRepository memberRepository = new MemberRepository();
         public bool CreateOrUpdate { get; set; }
         public Member MemberInfo { get; set; }
 
@@ -32,7 +32,7 @@ namespace SalesWinApp
             {
                 var members = new Member
                 {
-                    MemberId = int.Parse(txt_MemberID.Text),
+                    //MemberId = int.Parse(txt_MemberID.Text),
                     CompanyName = txt_CompanyName.Text,
                     Email = txt_MemberEmail.Text,
                     Password = txt_MemberPassword.Text,
@@ -50,11 +50,11 @@ namespace SalesWinApp
                 }
                 if (CreateOrUpdate == true)
                 {
-                    MemberRepository.AddNewMember(members);
+                    memberRepository.AddNewMember(members);
                 }
                 else
                 {
-                    MemberRepository.UpdateMember(members);
+                    memberRepository.UpdateMember(members);
                 }
                 this.DialogResult = DialogResult.OK;
             }
@@ -73,10 +73,10 @@ namespace SalesWinApp
         {
             cbo_City.SelectedIndex = 0;
             cbo_Country.SelectedIndex = 0;
-            txt_MemberID.Enabled = CreateOrUpdate;
+            txt_MemberID.Enabled = !CreateOrUpdate;
             if (CreateOrUpdate == false)
             {
-                txt_MemberID.Text = MemberInfo.MemberId.ToString();
+               // txt_MemberID.Text = MemberInfo.MemberId.ToString();
                 txt_CompanyName.Text = MemberInfo.CompanyName.ToString();
                 txt_MemberEmail.Text = MemberInfo.Email;
                 txt_MemberPassword.Text = MemberInfo.Password;
