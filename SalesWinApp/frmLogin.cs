@@ -1,6 +1,7 @@
 using BusinessObject;
 using DataAccess.Repository;
 using Microsoft.Extensions.Configuration;
+using System.Text.Json;
 namespace SalesWinApp
 {
 
@@ -8,27 +9,30 @@ namespace SalesWinApp
     public partial class frmLogin : Form
     {
         IMemberRepository memberRepository = new MemberRepository();
-        private IEnumerable<Member> members = null;
-        
+        private List<Member> memberList = new List<Member>();
+
         public frmLogin()
         {
             InitializeComponent();
-            members = memberRepository.GetMembers();
+            memberList = (List<Member>)memberRepository.GetMembers();
         }
 
         private void btn_Login_Click(object sender, EventArgs e)
         {
-            //var adminAccount = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("DefaultEmail").Get<Member>();
             string email = txt_Email.Text;
             string password = txt_Password.Text;
-            //if(email.Equals(adminAccount.Email) && password.Equals(adminAccount.Password))
-            //{
-            //    frmMemberMainForm frmMemberMainForm = new frmMemberMainForm();
-            //    this.Hide();
-            //    frmMemberMainForm.ShowDialog();
-            //   return;
-            //}
-            foreach(Member member in members)
+            /* String fileName = "appsettings.json";
+             String json = File.ReadAllText(fileName);
+             var adminAccount = JsonSerializer.Deserialize<Member>(json, null);
+
+             if(email.Equals(adminAccount.Email) && password.Equals(adminAccount.Password))
+             {
+                 frmMemberMainForm frmMemberMainForm = new frmMemberMainForm();
+                 this.Hide();
+                 frmMemberMainForm.ShowDialog();
+                return;
+             }*/
+            foreach (Member member in memberList)
             {
                 if(email.Equals(member.Email) && password.Equals(member.Password))
                 {

@@ -56,9 +56,9 @@ namespace DataAccess
             }
             return Default;
         }
-        public IEnumerable<Member> GetMembers()
+        public List<Member> GetMembers()
         {
-            IEnumerable<Member> members = null;
+            List<Member> members = null;
             try
             {
                 using (var context = new FStoreDBContext())
@@ -79,11 +79,6 @@ namespace DataAccess
             {
                 using (var context = new FStoreDBContext())
                 {
-                    if (context.Members.SingleOrDefault(value => value.MemberId == member.MemberId) != null)
-                    {
-                        throw new Exception("This Id was existed");
-
-                    }
                     context.Members.Add(member);
                     context.SaveChanges();
                 }
@@ -109,14 +104,14 @@ namespace DataAccess
                 throw new Exception(ex.Message);
             }
         }
-         public void DeleteMember(Member member)
+         public void DeleteMember(int memberID)
          {
              try
              {
                  using (var context = new FStoreDBContext())
                  {
-                     var _member = context.Members.SingleOrDefault(value => value.MemberId == member.MemberId);
-                     context.Members.Remove(member);
+                     var _member = context.Members.SingleOrDefault(value => value.MemberId == memberID);
+                     context.Members.Remove(_member);
                      context.SaveChanges();
 
                  }

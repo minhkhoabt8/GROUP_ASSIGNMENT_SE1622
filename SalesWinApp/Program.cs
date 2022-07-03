@@ -13,6 +13,7 @@ namespace SalesWinApp
             ApplicationConfiguration.Initialize();
             Application.Run(new frmAdminMainForm());
             //Application.Run(new frmProductManagement());
+            Application.Run(new frmMemberManagement());
         }
     }
 }

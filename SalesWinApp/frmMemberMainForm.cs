@@ -42,7 +42,7 @@ namespace SalesWinApp
             frmMemberManagement frmMemberManagement = null;
             if(member != null)
             {
-                frmMemberManagement = new frmMemberManagement(member);
+                frmMemberManagement = new frmMemberManagement();
 
             }
             else
@@ -50,7 +50,6 @@ namespace SalesWinApp
                 frmMemberManagement = new frmMemberManagement();
             }
             frmMemberManagement.Text = "Members Form";
-            frmMemberManagement.MdiParent = this;
             frmMemberManagement.StartPosition = FormStartPosition.Manual;
             frmMemberManagement.Show();
 
