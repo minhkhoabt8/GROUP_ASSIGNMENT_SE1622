@@ -38,5 +38,13 @@ namespace DataAccess.Repository
         {
             ProductDAO.Instance.UpdateProduct(product);
         }
+        public IEnumerable<Product> SearchProductByID(int productIDValue)
+        {
+            return ProductDAO.Instance.SearchProductByID(productIDValue);
+        }
+        public IEnumerable<Product> SearchProductByName(string productNameValue)
+        {
+            return ProductDAO.Instance.SearchProductByName(productNameValue);
+        }
     }
 }

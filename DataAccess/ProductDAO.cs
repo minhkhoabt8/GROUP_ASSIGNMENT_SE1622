@@ -114,6 +114,36 @@ namespace DataAccess
             }
             return null;
         }
+        public IEnumerable<Product> SearchProductByID(int productIDValue)
+        {
+            try
+            {
+                using FStoreDBContext dBContext = new FStoreDBContext();
+                    var products = dBContext.Products.Where(p => p.ProductId == productIDValue);
+                    return products.OrderByDescending(p => p.ProductId).ToList();
+                
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return null;
+        }
+        public IEnumerable<Product> SearchProductByName(string productNameValue)
+        {
+            try
+            {
+                using FStoreDBContext dBContext = new FStoreDBContext();
+                var products = dBContext.Products.Where(p => p.ProductName == productNameValue);
+                return products.OrderByDescending(p => p.ProductName).ToList();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return null;
+        }
 
     }
 }
