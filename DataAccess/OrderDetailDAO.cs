@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessObject;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,5 +27,22 @@ namespace DataAccess
             }
         }
         //code below here
+
+        public IEnumerable<OrderDetail> GetOrderDetailsByID(int orderID)
+        {
+
+            try
+            {
+                FStoreDBContext context = new FStoreDBContext();
+                var orderDetails = context.OrderDetails.Where(od => od.OrderId == orderID);
+                return orderDetails.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+
+        }
     }
 }

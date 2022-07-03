@@ -19,9 +19,9 @@ namespace DataAccess.Repository
             throw new NotImplementedException();
         }
 
-        public IEnumerable<OrderDetail> GetOrderDetails(int orderID)
+        public IEnumerable<OrderDetail> GetOrderDetailsByID(int orderID)
         {
-            throw new NotImplementedException();
+            return OrderDetailDAO.Instance.GetOrderDetailsByID(orderID);
         }
 
         public void UpdateOrderDetail(OrderDetail orderDetail)

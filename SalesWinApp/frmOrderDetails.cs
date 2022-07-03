@@ -18,11 +18,12 @@ namespace SalesWinApp
             InitializeComponent();
         }
         public OrderDetailRepository OrderDetailRepo { get; set; }
+        IOrderDetailRepository orderDetailRepository = new OrderDetailRepository();
         public int OrderID { get; set; }
         private void frmOrderDetails_Load(object sender, EventArgs e)
         {
             MessageBox.Show(""+OrderID);
-            var orderDetails = OrderDetailRepo.GetOrderDetails(OrderID)
+            var orderDetails = orderDetailRepository.GetOrderDetailsByID(OrderID)
                 .Select(order => new
                 {
                     order.ProductId,
