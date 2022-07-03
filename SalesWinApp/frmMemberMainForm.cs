@@ -49,7 +49,6 @@ namespace SalesWinApp
             if (member != null)
             {
                 frmMemberManagement = new frmMemberManagement();
-
             }
             else
             {
