@@ -28,19 +28,20 @@ namespace DataAccess
             }
         }
         // code below here
-        public List<Order> GetOrders()
+        public IEnumerable<Order> GetOrders()
         {
-            List<Order> orders;
+            //List<Order> orders;
             try
             {
                 using FStoreDBContext myContext = new FStoreDBContext();
-                orders = myContext.Orders.ToList();
+                var orders = myContext.Orders.ToList();
+                return orders;
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
-            return orders;
+            return null;
         }//end GetOrders
         public void AddNewOrder(Order order)
         {

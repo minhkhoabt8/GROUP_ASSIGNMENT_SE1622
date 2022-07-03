@@ -15,16 +15,21 @@ namespace SalesWinApp
 {
     public partial class frmOrderManagement : Form
     {
+        private static IOrderRepository orderRepository = new OrderRepository();
+        BindingSource source = null;
         public frmOrderManagement()
         {
             InitializeComponent();
         }
-        OrderRepository orderRepository = new OrderRepository();
+       // OrderRepository orderRepository = new OrderRepository();
         private void LoadOrders()
         {
-            var orders = OrderDAO.Instance.GetOrders();
+            //var orders = OrderDAO.Instance.GetOrders();
+            try
+            {
 
-            txt_OrderID.DataBindings.Clear();
+                var orders = OrderDAO.Instance.GetOrders();
+                txt_OrderID.DataBindings.Clear();
             txtMemberID.DataBindings.Clear();
             txtFreight.DataBindings.Clear();
             txtOrderDate.DataBindings.Clear();
@@ -37,17 +42,25 @@ namespace SalesWinApp
             txtOrderDate.DataBindings.Add("Text", orders, "OrderDate");
             txtRequiredDate.DataBindings.Add("Text", orders, "RequiredDate");
             txtShippedDate.DataBindings.Add("Text", orders, "ShippedDate");
-
-            dgv_OrderList.DataSource = orders;
-
-            if (orders.Count > 0)
-            {
-                btn_DeleteOrder.Enabled = true;
+                dgv_OrderList.DataSource = null;
+                dgv_OrderList.DataSource = orders;
+                if (orders.Any())
+                {
+                    btn_DeleteOrder.Enabled = true;
+                    btn_UpdateOrder.Enabled = true;
+                }
+                else
+                {
+                    
+                    btn_DeleteOrder.Enabled = false;
+                    btn_UpdateOrder.Enabled = false;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                btn_DeleteOrder.Enabled = false;
+                MessageBox.Show(ex.Message);
             }
+
         }
         private void frmOrderManagement_Load(object sender, EventArgs e) => LoadOrders();
         
