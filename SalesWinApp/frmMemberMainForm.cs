@@ -20,6 +20,7 @@ namespace SalesWinApp
             InitializeComponent();
         }
         IProductRepository productRepository = new ProductRepository();
+        IMemberRepository memberRepository = new MemberRepository();
         BindingSource source = null;
         public frmMemberMainForm(Member member)
         {
@@ -29,14 +30,14 @@ namespace SalesWinApp
         }
         private void btn_UpdateProfile_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void btn_ViewOrderHistory_Click(object sender, EventArgs e)
         {
-           
-           
-            
+
+
+
 
         }
 
@@ -45,7 +46,7 @@ namespace SalesWinApp
         private void frmMemberMainForm_Load(object sender, EventArgs e)
         {
             frmMemberManagement frmMemberManagement = null;
-            if(member != null)
+            if (member != null)
             {
                 frmMemberManagement = new frmMemberManagement();
 
@@ -59,8 +60,12 @@ namespace SalesWinApp
             frmMemberManagement.Show();
 
         }
+        private void LoadOrders()
+        {
+            var orders = memberRepository.GetOrderHistory(int.Parse(txt_MemberID.Text));
 
+            frmOrderHistory orderHistory = new frmOrderHistory();
 
-
+        }
     }
 }
