@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessObject;
+using DataAccess;
 using DataAccess.Repository;
 
 namespace SalesWinApp
@@ -48,7 +49,7 @@ namespace SalesWinApp
             frmMemberManagement frmMemberManagement = null;
             if (member != null)
             {
-                frmMemberManagement = new frmMemberManagement();
+                LoadMemberList(member.MemberId);
             }
             else
             {
@@ -59,6 +60,23 @@ namespace SalesWinApp
             frmMemberManagement.Show();
 
         }
-        
+        private void LoadMemberList(int memberID)
+        {
+            var members = MemberDAO.Instance.GetMember(memberID);
+            txt_MemberID.DataBindings.Clear();
+            txt_Email.DataBindings.Clear();
+            txt_CompanyName.DataBindings.Clear();
+            txt_Password.DataBindings.Clear();
+            txt_City.DataBindings.Clear();
+            txt_Country.DataBindings.Clear();
+
+            txt_MemberID.DataBindings.Add("Text", members, "MemberId");
+            txt_Email.DataBindings.Add("Text", members, "Email");
+            txt_CompanyName.DataBindings.Add("Text", members, "CompanyName");
+            txt_City.DataBindings.Add("Text", members, "City");
+            txt_Country.DataBindings.Add("Text", members, "Country");
+            txt_Password.DataBindings.Add("Text", members, "Password");
+            txt_MemberID.Enabled = false;
+        }
     }
 }

@@ -67,6 +67,10 @@ namespace SalesWinApp
         }
 
         private void btn_Exit_Click(object sender, EventArgs e) => Close();
-        
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
