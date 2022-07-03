@@ -86,6 +86,7 @@
             this.Name = "frmAdminMainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAdminMainForm";
+            this.Load += new System.EventHandler(this.frmAdminMainForm_Load);
             this.ResumeLayout(false);
 
         }

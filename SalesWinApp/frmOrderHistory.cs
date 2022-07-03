@@ -21,9 +21,6 @@ namespace SalesWinApp
             InitializeComponent();
         }
 
-
-
-
         private void frmOrderHistory_Load(object sender, EventArgs e)
         {
             

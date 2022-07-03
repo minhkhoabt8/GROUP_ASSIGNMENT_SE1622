@@ -39,5 +39,10 @@ namespace SalesWinApp
         {
             Close();
         }
+
+        private void frmAdminMainForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

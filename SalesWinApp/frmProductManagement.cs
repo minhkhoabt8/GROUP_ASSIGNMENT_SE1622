@@ -15,7 +15,7 @@ namespace SalesWinApp
 {
     public partial class frmProductManagement : Form
     {
-        IProductRepository productRepository = new ProductRepository();
+        private static IProductRepository productRepository = new ProductRepository();
         BindingSource source = null;
         public frmProductManagement()
         {
