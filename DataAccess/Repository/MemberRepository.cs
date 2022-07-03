@@ -26,7 +26,7 @@ namespace DataAccess.Repository
 
         public Member GetMemberByID(int memberID)
         {
-            throw new NotImplementedException();
+           return MemberDAO.Instance.GetMemberByID(memberID);
         }
 
         public IEnumerable<Member> GetMembers()

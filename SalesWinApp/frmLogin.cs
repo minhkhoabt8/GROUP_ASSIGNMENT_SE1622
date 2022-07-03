@@ -57,16 +57,17 @@ namespace SalesWinApp
                         frmMemberMainForm frmMemberMainForm = new frmMemberMainForm();
                         
                         frmMemberMainForm.ShowDialog();
-                        
 
                     }
                 }
-                MessageBox.Show("Email or Password is wrong", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
             }
             
+
+
         }
 
         private void btn_Exit_Click(object sender, EventArgs e) => Close();
-        
+
     }
 }

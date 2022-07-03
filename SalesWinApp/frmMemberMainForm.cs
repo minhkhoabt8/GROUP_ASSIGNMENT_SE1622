@@ -18,6 +18,7 @@ namespace SalesWinApp
         private static IMemberRepository memberRepository = new MemberRepository();
 
         public Member member { get; set; }
+        public Member currMember = null;
         public bool CreateOrUpdate { get; set; }
         public Member MemberInfo { get; set; }
 
@@ -34,7 +35,13 @@ namespace SalesWinApp
 
         private void btn_ViewOrderHistory_Click(object sender, EventArgs e)
         {
-
+            //currMember = memberRepository.GetMemberByID(MemberID);
+            //frmOrderHistory frmOrderHistory = new frmOrderHistory
+            //{
+               
+            //   MemberInfo = currMember
+            //};
+            //frmOrderHistory.ShowDialog();
 
 
 

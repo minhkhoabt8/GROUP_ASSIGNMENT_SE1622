@@ -123,7 +123,7 @@ namespace DataAccess
              }
 
          }
-        public Member GetMember(int memberId)
+        public Member GetMemberByID(int memberId)
         {
             Member member = null;
 
