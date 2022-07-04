@@ -32,7 +32,15 @@ namespace SalesWinApp
   
         private void btn_UpdateProfile_Click(object sender, EventArgs e)
         {
-            
+            frmEditMember frmEditMember = new frmEditMember
+            {
+                Text = "Update Profile",
+                MemberInfo = GetMemberObject()
+            };
+            if (frmEditMember.ShowDialog() == DialogResult.OK)
+            {
+                LoadMember();
+            }
         }
 
         private void btn_ViewOrderHistory_Click(object sender, EventArgs e)
@@ -77,6 +85,28 @@ namespace SalesWinApp
             txt_Country.DataBindings.Add("Text", members, "Country");
             txt_Password.DataBindings.Add("Text", members, "Password");
             txt_MemberID.Enabled = false;
+        }
+
+        private Member GetMemberObject()
+        {
+            Member member = null;
+            try
+            {
+                member = new Member
+                {
+                    MemberId = int.Parse(txt_MemberID.Text),
+                    Email = txt_Email.Text,
+                    Password = txt_Password.Text,
+                    CompanyName = txt_CompanyName.Text,
+                    City = txt_City.Text,
+                    Country = txt_Country.Text
+                };
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Get Member");
+            }
+            return member;
         }
     }
 }
