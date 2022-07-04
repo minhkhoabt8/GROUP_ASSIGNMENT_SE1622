@@ -11,12 +11,17 @@ namespace DataAccess.Repository
     {
         public void AddNewOrderDetail(OrderDetail orderDetail)
         {
-            throw new NotImplementedException();
+           OrderDetailDAO.Instance.AddNewOrderDetail(orderDetail);
         }
 
         public void DeleteOrderDetail(int orderID, int productID)
         {
-            throw new NotImplementedException();
+            OrderDetailDAO.Instance.DeleteOrderDetail(orderID, productID);
+        }
+
+        public IEnumerable<OrderDetail> GetOrderDetails()
+        {
+            return OrderDetailDAO.Instance.GetOrderDetails();
         }
 
         public IEnumerable<OrderDetail> GetOrderDetailsByID(int orderID)
@@ -26,7 +31,7 @@ namespace DataAccess.Repository
 
         public void UpdateOrderDetail(OrderDetail orderDetail)
         {
-            throw new NotImplementedException();
+            OrderDetailDAO.Instance.UpdateOrderDetail(orderDetail);
         }
     }
 }

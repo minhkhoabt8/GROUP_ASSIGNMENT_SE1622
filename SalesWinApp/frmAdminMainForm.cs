@@ -44,5 +44,11 @@ namespace SalesWinApp
         {
 
         }
+
+        private void btn_OrderDetailsManagement_Click(object sender, EventArgs e)
+        {
+            frmOrderDetailManagement frmOrderDetailManagement = new frmOrderDetailManagement();
+            frmOrderDetailManagement.ShowDialog();
+        }
     }
 }

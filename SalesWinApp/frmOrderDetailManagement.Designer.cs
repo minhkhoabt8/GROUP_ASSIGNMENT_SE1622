@@ -30,7 +30,7 @@
         {
             this.btn_DeleteDetail = new System.Windows.Forms.Button();
             this.btn_UpdateDetail = new System.Windows.Forms.Button();
-            this.dgv_MemberList = new System.Windows.Forms.DataGridView();
+            this.dgv_OrderDetailList = new System.Windows.Forms.DataGridView();
             this.btn_Search = new System.Windows.Forms.Button();
             this.txt_SearchValue = new System.Windows.Forms.TextBox();
             this.btnClose = new System.Windows.Forms.Button();
@@ -45,7 +45,7 @@
             this.txt_Quantity = new System.Windows.Forms.TextBox();
             this.lb_Discount = new System.Windows.Forms.Label();
             this.lb_Quantity = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_MemberList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_OrderDetailList)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_DeleteDetail
@@ -56,6 +56,7 @@
             this.btn_DeleteDetail.TabIndex = 94;
             this.btn_DeleteDetail.Text = "Delete Detail";
             this.btn_DeleteDetail.UseVisualStyleBackColor = true;
+            this.btn_DeleteDetail.Click += new System.EventHandler(this.btn_DeleteDetail_Click);
             // 
             // btn_UpdateDetail
             // 
@@ -65,18 +66,19 @@
             this.btn_UpdateDetail.TabIndex = 93;
             this.btn_UpdateDetail.Text = "Update Detail";
             this.btn_UpdateDetail.UseVisualStyleBackColor = true;
+            this.btn_UpdateDetail.Click += new System.EventHandler(this.btn_UpdateDetail_Click);
             // 
-            // dgv_MemberList
+            // dgv_OrderDetailList
             // 
-            this.dgv_MemberList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_MemberList.Location = new System.Drawing.Point(420, 67);
-            this.dgv_MemberList.Name = "dgv_MemberList";
-            this.dgv_MemberList.ReadOnly = true;
-            this.dgv_MemberList.RowHeadersWidth = 51;
-            this.dgv_MemberList.RowTemplate.Height = 29;
-            this.dgv_MemberList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_MemberList.Size = new System.Drawing.Size(662, 312);
-            this.dgv_MemberList.TabIndex = 89;
+            this.dgv_OrderDetailList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_OrderDetailList.Location = new System.Drawing.Point(420, 67);
+            this.dgv_OrderDetailList.Name = "dgv_OrderDetailList";
+            this.dgv_OrderDetailList.ReadOnly = true;
+            this.dgv_OrderDetailList.RowHeadersWidth = 51;
+            this.dgv_OrderDetailList.RowTemplate.Height = 29;
+            this.dgv_OrderDetailList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_OrderDetailList.Size = new System.Drawing.Size(662, 312);
+            this.dgv_OrderDetailList.TabIndex = 89;
             // 
             // btn_Search
             // 
@@ -102,6 +104,7 @@
             this.btnClose.TabIndex = 90;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btn_AddNewDetails
             // 
@@ -111,6 +114,7 @@
             this.btn_AddNewDetails.TabIndex = 88;
             this.btn_AddNewDetails.Text = "Add New Detail";
             this.btn_AddNewDetails.UseVisualStyleBackColor = true;
+            this.btn_AddNewDetails.Click += new System.EventHandler(this.btn_AddNewDetails_Click);
             // 
             // txt_ProductID
             // 
@@ -210,7 +214,7 @@
             this.Controls.Add(this.lb_Quantity);
             this.Controls.Add(this.btn_DeleteDetail);
             this.Controls.Add(this.btn_UpdateDetail);
-            this.Controls.Add(this.dgv_MemberList);
+            this.Controls.Add(this.dgv_OrderDetailList);
             this.Controls.Add(this.btn_Search);
             this.Controls.Add(this.txt_SearchValue);
             this.Controls.Add(this.btnClose);
@@ -225,7 +229,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmOrderDetailManagement";
             this.Load += new System.EventHandler(this.frmOrderDetailManagement_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_MemberList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_OrderDetailList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -235,7 +239,7 @@
 
         private Button btn_DeleteDetail;
         private Button btn_UpdateDetail;
-        private DataGridView dgv_MemberList;
+        private DataGridView dgv_OrderDetailList;
         private Button btn_Search;
         private TextBox txt_SearchValue;
         private Button btnClose;

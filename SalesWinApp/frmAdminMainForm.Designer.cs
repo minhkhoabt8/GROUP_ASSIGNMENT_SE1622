@@ -32,6 +32,7 @@
             this.btn_ProductManagement = new System.Windows.Forms.Button();
             this.btn_OrderManagement = new System.Windows.Forms.Button();
             this.btn_Close = new System.Windows.Forms.Button();
+            this.btn_OrderDetailsManagement = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Member_Management
@@ -66,7 +67,7 @@
             // 
             // btn_Close
             // 
-            this.btn_Close.Location = new System.Drawing.Point(361, 333);
+            this.btn_Close.Location = new System.Drawing.Point(364, 403);
             this.btn_Close.Name = "btn_Close";
             this.btn_Close.Size = new System.Drawing.Size(104, 46);
             this.btn_Close.TabIndex = 3;
@@ -74,11 +75,22 @@
             this.btn_Close.UseVisualStyleBackColor = true;
             this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
             // 
+            // btn_OrderDetailsManagement
+            // 
+            this.btn_OrderDetailsManagement.Location = new System.Drawing.Point(209, 322);
+            this.btn_OrderDetailsManagement.Name = "btn_OrderDetailsManagement";
+            this.btn_OrderDetailsManagement.Size = new System.Drawing.Size(419, 55);
+            this.btn_OrderDetailsManagement.TabIndex = 4;
+            this.btn_OrderDetailsManagement.Text = "Order Detail Management";
+            this.btn_OrderDetailsManagement.UseVisualStyleBackColor = true;
+            this.btn_OrderDetailsManagement.Click += new System.EventHandler(this.btn_OrderDetailsManagement_Click);
+            // 
             // frmAdminMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 472);
+            this.Controls.Add(this.btn_OrderDetailsManagement);
             this.Controls.Add(this.btn_Close);
             this.Controls.Add(this.btn_OrderManagement);
             this.Controls.Add(this.btn_ProductManagement);
@@ -97,5 +109,6 @@
         private Button btn_ProductManagement;
         private Button btn_OrderManagement;
         private Button btn_Close;
+        private Button btn_OrderDetailsManagement;
     }
 }

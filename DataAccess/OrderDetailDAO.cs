@@ -29,6 +29,14 @@ namespace DataAccess
         }
         //code below here
 
+
+        public IEnumerable<OrderDetail> GetOrderDetails()
+        {
+            FStoreDBContext context = new FStoreDBContext();
+            var orderDetails = context.OrderDetails.ToList();
+            return orderDetails;
+        }
+
         public IEnumerable<OrderDetail> GetOrderDetailsByID(int orderID)
         {
 
@@ -47,8 +55,11 @@ namespace DataAccess
 
         public void AddNewOrderDetail(OrderDetail orderDetail)
         {
-            //var order = dBContext.OrderDetails.Where(o => o.OrderId == orderDetail.OrderId && o.ProductId == orderDetail.ProductId);
-            //if(order != null)
+            var order = dBContext.OrderDetails.Where(o => o.OrderId == orderDetail.OrderId && o.ProductId == orderDetail.ProductId);
+            if(order != null)
+            {
+                throw new Exception("Poduct ID already Exist in This Order ");
+            }
             dBContext.OrderDetails.Add(orderDetail); 
             dBContext.SaveChanges();
         }
@@ -61,6 +72,7 @@ namespace DataAccess
 
         public void UpdateOrderDetail(OrderDetail orderDetail)
         {
+
             var order = dBContext.OrderDetails.Where(o => o.OrderId == orderDetail.OrderId && o.ProductId == orderDetail.ProductId);
             if (order != null)
             {
