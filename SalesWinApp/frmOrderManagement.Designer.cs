@@ -31,8 +31,6 @@
             this.btn_DeleteOrder = new System.Windows.Forms.Button();
             this.btn_UpdateOrder = new System.Windows.Forms.Button();
             this.dgv_OrderList = new System.Windows.Forms.DataGridView();
-            this.btn_Search = new System.Windows.Forms.Button();
-            this.txt_SearchValue = new System.Windows.Forms.TextBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.btn_AddNewOrder = new System.Windows.Forms.Button();
             this.txt_OrderID = new System.Windows.Forms.TextBox();
@@ -81,22 +79,6 @@
             this.dgv_OrderList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_OrderList.Size = new System.Drawing.Size(662, 312);
             this.dgv_OrderList.TabIndex = 106;
-            // 
-            // btn_Search
-            // 
-            this.btn_Search.Location = new System.Drawing.Point(962, 31);
-            this.btn_Search.Name = "btn_Search";
-            this.btn_Search.Size = new System.Drawing.Size(130, 29);
-            this.btn_Search.TabIndex = 109;
-            this.btn_Search.Text = "Search";
-            this.btn_Search.UseVisualStyleBackColor = true;
-            // 
-            // txt_SearchValue
-            // 
-            this.txt_SearchValue.Location = new System.Drawing.Point(516, 31);
-            this.txt_SearchValue.Name = "txt_SearchValue";
-            this.txt_SearchValue.Size = new System.Drawing.Size(427, 27);
-            this.txt_SearchValue.TabIndex = 108;
             // 
             // btnClose
             // 
@@ -244,8 +226,6 @@
             this.Controls.Add(this.btn_DeleteOrder);
             this.Controls.Add(this.btn_UpdateOrder);
             this.Controls.Add(this.dgv_OrderList);
-            this.Controls.Add(this.btn_Search);
-            this.Controls.Add(this.txt_SearchValue);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btn_AddNewOrder);
             this.Controls.Add(this.txt_OrderID);
@@ -265,8 +245,6 @@
         private Button btn_DeleteOrder;
         private Button btn_UpdateOrder;
         private DataGridView dgv_OrderList;
-        private Button btn_Search;
-        private TextBox txt_SearchValue;
         private Button btnClose;
         private Button btn_AddNewOrder;
         private TextBox txt_OrderID;

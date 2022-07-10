@@ -55,13 +55,24 @@ namespace DataAccess
 
         public void AddNewOrderDetail(OrderDetail orderDetail)
         {
-            var order = dBContext.OrderDetails.Where(o => o.OrderId == orderDetail.OrderId && o.ProductId == orderDetail.ProductId);
-            if(order != null)
+            try
             {
-                throw new Exception("Poduct ID already Exist in This Order ");
+                var product = dBContext.Products.FirstOrDefault(p => p.ProductId == orderDetail.ProductId);
+                if (product != null)
+                {
+                    dBContext.OrderDetails.Add(orderDetail);
+                    dBContext.SaveChanges();
+                }
+                else
+                {
+                    throw new Exception("Product Not Found");
+                }
             }
-            dBContext.OrderDetails.Add(orderDetail); 
-            dBContext.SaveChanges();
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            
         }
         public void DeleteOrderDetail(int orderID, int productID)
         {

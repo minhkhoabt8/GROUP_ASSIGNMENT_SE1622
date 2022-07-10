@@ -31,8 +31,6 @@
             this.btn_DeleteDetail = new System.Windows.Forms.Button();
             this.btn_UpdateDetail = new System.Windows.Forms.Button();
             this.dgv_OrderDetailList = new System.Windows.Forms.DataGridView();
-            this.btn_Search = new System.Windows.Forms.Button();
-            this.txt_SearchValue = new System.Windows.Forms.TextBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.btn_AddNewDetails = new System.Windows.Forms.Button();
             this.txt_ProductID = new System.Windows.Forms.TextBox();
@@ -79,22 +77,6 @@
             this.dgv_OrderDetailList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_OrderDetailList.Size = new System.Drawing.Size(662, 312);
             this.dgv_OrderDetailList.TabIndex = 89;
-            // 
-            // btn_Search
-            // 
-            this.btn_Search.Location = new System.Drawing.Point(952, 25);
-            this.btn_Search.Name = "btn_Search";
-            this.btn_Search.Size = new System.Drawing.Size(130, 29);
-            this.btn_Search.TabIndex = 92;
-            this.btn_Search.Text = "Search";
-            this.btn_Search.UseVisualStyleBackColor = true;
-            // 
-            // txt_SearchValue
-            // 
-            this.txt_SearchValue.Location = new System.Drawing.Point(506, 25);
-            this.txt_SearchValue.Name = "txt_SearchValue";
-            this.txt_SearchValue.Size = new System.Drawing.Size(427, 27);
-            this.txt_SearchValue.TabIndex = 91;
             // 
             // btnClose
             // 
@@ -215,8 +197,6 @@
             this.Controls.Add(this.btn_DeleteDetail);
             this.Controls.Add(this.btn_UpdateDetail);
             this.Controls.Add(this.dgv_OrderDetailList);
-            this.Controls.Add(this.btn_Search);
-            this.Controls.Add(this.txt_SearchValue);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btn_AddNewDetails);
             this.Controls.Add(this.txt_ProductID);
@@ -240,8 +220,6 @@
         private Button btn_DeleteDetail;
         private Button btn_UpdateDetail;
         private DataGridView dgv_OrderDetailList;
-        private Button btn_Search;
-        private TextBox txt_SearchValue;
         private Button btnClose;
         private Button btn_AddNewDetails;
         private TextBox txt_ProductID;
